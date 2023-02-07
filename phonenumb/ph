@@ -1,0 +1,12 @@
+import phonenumbers
+from phonenumbers import geocoder
+from phonenumbers import carrier
+# from testnum import number
+number = input("Your phone number: ")
+def phonenumb():
+    ch_num = phonenumbers.parse(number, "CH")
+    geo = geocoder.description_for_number(ch_num, "en")
+    serv = phonenumbers.parse(number, "RO")
+    carr = carrier.name_for_number(serv, "en")
+    return geo, carr
+print(phonenumb())

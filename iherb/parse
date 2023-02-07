@@ -1,0 +1,19 @@
+import requests
+import json
+import pandas as pd
+
+baseurl = 'https://ua.iherb.com/pr/california-gold-nutrition-baby-vitamin-d3-liquid-10-mcg-400-iu-0-34-fl-oz-10-ml/65958'
+
+
+def main_request(baseurl):
+    r = requests.get(baseurl)
+    return r.json()
+
+mainlist = []
+data = main_request(baseurl)
+mainlist.extend(parse_json(main_request(baseurl)))
+
+data_frame = pd.DataFrame(mainlist)
+
+data_frame.to_csv('item.csv', index = False)
+
